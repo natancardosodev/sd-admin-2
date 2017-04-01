@@ -1,0 +1,8 @@
+Projeto com strutura base para criar sistemas web
+Nessa estrutura, trabalhamos com as seguintes tecnologias/ferramentas
+1 - Spring MVC / Spring Boot
+2 - Java 8
+3 - Maven 3
+4 - Eclipse Neon
+5 - Banco de Dados Postgres
+6 - Thymeleaf
