@@ -1,20 +1,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
-  <body>
   
     <div th:fragment="menu">
-	  <div class="navbar-default sidebar" role="navigation">
+    		<div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">
                             <div class="input-group custom-search-form">
                                 <input type="text" class="form-control" placeholder="Search..."/>
                                 <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
                             </div>
                             <!-- /input-group -->
                         </li>
@@ -93,11 +92,11 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="blank.html">Blank Page</a>
+                                    <a class="active" href="blank.html">Blank Page</a>
                                 </li>
                                 <li>
                                     <a href="login.html">Login Page</a>
@@ -109,10 +108,8 @@
                 </div>
                 <!-- /.sidebar-collapse -->
             </div>
-    </div>
-  
-  </body>
-  
+	  
+  	</div>
 </html>
 
 

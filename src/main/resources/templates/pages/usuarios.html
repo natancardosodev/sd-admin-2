@@ -5,14 +5,18 @@
 
 <section layout:fragment="conteudo">
 
-	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="margin-top: -45px;">
-		<ol class="breadcrumb">
+	<div id="page-wrapper">
+       <div class="row">
+           <div class="col-lg-12">
+               <h1 class="page-header">Usuários</h1>
+           </div>
+       </div>
+       
+        <ol class="breadcrumb">
 			<li class="breadcrumb-item"><a th:href="@{/home}">Home</a></li>
 			<li class="breadcrumb-item active">Usuário</li>
 		</ol>
 
-
-		<h4 class="sub-header">Usuários</h4>
 		<div class="table-responsive">
 			<table class="table table-striped">
 				<thead>
@@ -111,8 +115,8 @@
 				</tbody>
 			</table>
 		</div>
-	</div>
+    </div>
+    <div id="page-wrapper">
+    </div>
 </section>
-
-
 </html>
