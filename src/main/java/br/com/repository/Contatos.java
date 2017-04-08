@@ -1,8 +1,8 @@
-package br.com.contatos.repository;
+package br.com.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import br.com.contatos.model.Contato;
+import br.com.model.Contato;
 
 public interface Contatos extends JpaRepository<Contato, Long> {
 

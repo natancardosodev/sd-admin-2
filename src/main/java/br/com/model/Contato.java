@@ -1,4 +1,4 @@
-package br.com.contatos.model;
+package br.com.model;
 
 import java.io.Serializable;
 
