@@ -31,3 +31,4 @@ nbdist/
 *.target
 *.project
 *.sprringBeans
+/bin/
