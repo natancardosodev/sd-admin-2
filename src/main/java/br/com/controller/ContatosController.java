@@ -22,7 +22,7 @@ public class ContatosController {
 	public ModelAndView listar() {
 		List<Contato> lista = contatos.findAll();
 		
-		ModelAndView modelAndView = new ModelAndView("contatos");		
+		ModelAndView modelAndView = new ModelAndView("pages/contato/contatos");		
 		modelAndView.addObject("contatos", lista);
 		
 		return modelAndView;
