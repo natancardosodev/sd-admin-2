@@ -10,17 +10,18 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.model.Contato;
 import br.com.repository.Contatos;
+import br.com.service.ContatoService;
 
 @Controller
 @RequestMapping("/contatos")
 public class ContatosController {
 	
 	@Autowired
-	private Contatos contatos;
+	private ContatoService service;
 	
 	@GetMapping
 	public ModelAndView listar() {
-		List<Contato> lista = contatos.findAll();
+		List<Contato> lista = service.list();
 		
 		ModelAndView modelAndView = new ModelAndView("pages/contato/contatos");		
 		modelAndView.addObject("contatos", lista);
