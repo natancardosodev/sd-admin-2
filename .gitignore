@@ -31,3 +31,5 @@ nbdist/
 *.project
 *.sprringBeans
 /bin/
+
+src/main/resources/\.DS_Store

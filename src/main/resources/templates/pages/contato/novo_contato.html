@@ -6,19 +6,20 @@
 <section layout:fragment="conteudo">
 
 	<div id="page-wrapper">
-		<div class="row">
+		<div class="row top-header">
 			<div class="col-lg-12">
-				<h4 class="page-header">Cadastrar Usuário</h4>
+				<h4 class="page-header">Novo Contato</h4>
 			</div>
 		</div>
 
 		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a th:href="@{/admin/home}">Home</a></li>
-			<li class="breadcrumb-item active">Usuários</li>
+			<li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+			<li class="breadcrumb-item active">Contatos</li>
 		</ol>
-		<!-- FORUMALARIO DE CADASTRO DE USUÁRIO -->
+		<!-- FORUMALARIO DE CADASTRO DE CONTATO-->
 		
-		<form th:object="${usuario}" th:action="@{/usuarios/save}" method="POST" role="form">
+		<form th:object="${contato}" th:action="@{/contatos/save}" method="POST" role="form">
+		
 		<div class="form-group row">
 	        <div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
 	            <div th:each="detailedError : ${#fields.detailedErrors()}">
@@ -27,19 +28,9 @@
 		        </div>
 		    </div> 
 		
-		<div class="form-group" th:classappend="${#fields.hasErrors('name')}? 'has-error'">
+		<div class="form-group" th:classappend="${#fields.hasErrors('nome')}? 'has-error'">
 			<label>Nome</label> 
-			<input id="name" class="form-control" type="text" name="name"  th:field="*{name}"/>
-		</div>
-		
-		<div class="form-group" th:classappend="${#fields.hasErrors('lastName')}? 'has-error'">
-			<label>Ultimo Nome</label> 
-			<input id="lastName" class="form-control" type="text" name="lastName"  th:field="*{lastName}"/>
-		</div>
-		
-		<div class="form-group" th:classappend="${#fields.hasErrors('login')}? 'has-error'">
-			<label>Login</label> 
-			<input class="form-control" type="text" name="login"  th:field="*{login}"/>
+			<input id="name" class="form-control" type="text" name="nome"  th:field="*{nome}"/>
 		</div>
 		
 		<div class="form-group" th:classappend="${#fields.hasErrors('email')}? 'has-error'">
@@ -47,28 +38,9 @@
 			<input class="form-control" type="text" name="email"  th:field="*{email}"/>
 		</div>
 		
-		<div class="form-group" th:classappend="${#fields.hasErrors('roles')}? 'has-error'">
-			<label>Selecione as Permissões</label> <select class="form-control">
-				<option>Master</option>
-				<option>Administrador</option>
-				<option>Gerente</option>
-				<option>Usuário</option>
-				<option>Visitante</option>
-			</select>
-		</div>
-		<div class="form-group" th:classappend="${#fields.hasErrors('password')}? 'has-error'">
-			<label>Senha</label> 
-			<input class="form-control" type="password" name="password" th:field="*{password}"/>
-		</div>
-		
-		<div class="form-group" th:classappend="${#fields.hasErrors('confirm')}? 'has-error'">
-			<label>Confirma Senha</label> 
-			<input class="form-control" type="password" name="confirm"  th:field="*{confirm}"/>
-		</div>
-		
 		<div class="form-group">
-			<button type="submit" class="btn btn-primary">Salvar</button>
-			<button type="reset" class="btn btn-warning">Limpar</button>
+			<button type="submit" class="btn btn-outline btn-primary">Salvar</button>
+			<button type="reset" class="btn btn-outline btn-default">Limpar</button>
 		</div>
 		</form>
 	</div>

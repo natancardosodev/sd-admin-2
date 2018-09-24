@@ -1,6 +1,0 @@
-2018-09-20 12:06:45 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLException: Table "CONTATOS" not found; SQL statement:
-select * from contatos [42102-193]
-2018-09-20 12:06:50 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLException: Table "CONTATOS" not found; SQL statement:
-select * from contatos [42102-193]
