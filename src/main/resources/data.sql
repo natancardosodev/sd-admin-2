@@ -1,4 +1,6 @@
-INSERT INTO contatos (id,nome,email) VALUES (1,'Carlos Barbosa','cbgomes@gmail.com');
-INSERT INTO contatos (id,nome,email) VALUES (2,'João Pereira','jbatista@gmail.com');
-INSERT INTO contatos (id,nome,email) VALUES (3,'Beto Barbosa','beto@gmail.com');
-INSERT INTO contatos (id,nome,email) VALUES (4,'Amado Batista','amado@gmail.com');
+
+INSERT INTO contatos (nome,email) VALUES ('Carlos Barbosa','cbgomes@gmail.com');
+INSERT INTO contatos (nome,email) VALUES ('João Pereira','ja@gmail.com');
+INSERT INTO contatos (nome,email) VALUES ('Maria Barbosa','mbarbosa@gmail.com');
+INSERT INTO contatos (nome,email) VALUES ('Alice Barbosa','alice@gmail.com');
+INSERT INTO contatos (nome,email) VALUES ('Barbara Barbosa','barbara@gmail.com');

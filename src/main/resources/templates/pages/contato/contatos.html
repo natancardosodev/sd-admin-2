@@ -24,13 +24,17 @@
 					<tr>
 						<th>Nome</th>
 						<th>E-mail</th>
-<!-- 						<th class="th-acoes">Ações</th> -->
+						<th class="th-acoes">Ações</th>
 					</tr>
 				</thead>
 				<tbody >
 				      <tr th:each="c: ${contatos}">  
 				        <td th:text="${c.nome}"></td>
 				        <td th:text="${c.email}"></td>
+				        <td>
+				        	<a th:href="@{/contatos/novo}" type="button" class="btn btn-outline btn-warning">Editar</a>
+				        	<a th:href="@{/contatos/novo}" type="button" class="btn btn-outline btn-danger">Editar</a>
+				        </td>
 				      </tr>
 				</tbody>
 			</table>
