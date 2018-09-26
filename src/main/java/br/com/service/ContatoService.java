@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.model.Contato;
-import br.com.repository.Contatos;
+import br.com.repository.ContatosRepository;
 
 /**
  * @author carlosbarbosagomesfilho
@@ -20,7 +20,7 @@ import br.com.repository.Contatos;
 public class ContatoService {
 
 	@Autowired
-	private Contatos repository;
+	private ContatosRepository repository;
 	
 	@Transactional(readOnly=true)
 	public List<Contato> list(){

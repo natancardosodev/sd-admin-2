@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.model.Contato;
 
-public interface Contatos extends JpaRepository<Contato, Long> {
+public interface ContatosRepository extends JpaRepository<Contato, Long> {
 
 }
