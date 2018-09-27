@@ -31,4 +31,14 @@ public class ContatoService {
 	public void save(Contato contato) {
 		this.repository.save(contato);
 	}
+	
+	@Transactional
+	public void remove(Long id) {
+		this.repository.delete(id);
+	}
+	
+	@Transactional(readOnly=true)
+	public Contato getById(Long id) {
+		return this.repository.findOne(id);
+	}
 }

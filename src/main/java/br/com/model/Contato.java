@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 @Table(name="contatos")
 public class Contato implements Serializable {
@@ -19,8 +21,10 @@ public class Contato implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotEmpty(message="Nome é obrigatório")
 	private String nome;
 	
+	@NotEmpty(message="Email é obrigatório")
 	private String email;
 
 	public Long getId() {

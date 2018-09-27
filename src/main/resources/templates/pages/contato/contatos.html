@@ -17,11 +17,22 @@
 			<li class="breadcrumb-item active">Contato</li>
 			
 		</ol>
+		
+		<div class="alert alert-success" th:if="${not #strings.isEmpty(mensagem)}">
+			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+			<span th:text="${mensagem}"></span>
+   		</div>
+   		
+   		<div class="alert alert-success" th:if="${not #strings.isEmpty(removido)}">
+			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+			<span th:text="${removido}"></span>
+   		</div>
 
 		<div class="table-responsive">
 			<table class="table table-striped">
 				<thead>
 					<tr>
+						<th>Id</th>
 						<th>Nome</th>
 						<th>E-mail</th>
 						<th class="th-acoes">Ações</th>
@@ -29,11 +40,12 @@
 				</thead>
 				<tbody >
 				      <tr th:each="c: ${contatos}">  
+				      	<td th:text="${c.id}"></td>
 				        <td th:text="${c.nome}"></td>
 				        <td th:text="${c.email}"></td>
 				        <td>
-				        	<a th:href="@{/contatos/novo}" type="button" class="btn btn-outline btn-warning">Editar</a>
-				        	<a th:href="@{/contatos/novo}" type="button" class="btn btn-outline btn-danger">Excluir</a>
+				        	<a th:href="@{contatos/edit/{id}(id=${c.id})}" type="button" class="btn btn-outline btn-warning">Editar</a>
+				        	<a th:href="@{contatos/delete/{id}(id=${c.id})}" type="button" class="btn btn-outline btn-danger">Excluir</a>
 				        </td>
 				      </tr>
 				</tbody>

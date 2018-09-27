@@ -18,9 +18,15 @@
 		</ol>
 		<!-- FORUMALARIO DE CADASTRO DE CONTATO-->
 		
+		<div class="alert alert-success" th:if="${not #strings.isEmpty(mensagem)}">
+			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+			<span th:text="${mensagem}"></span>
+   		</div>
+		
 		<form th:object="${contato}" th:action="@{/contatos/save}" method="POST" role="form">
 		
-		<div class="form-group row">
+		<input id="id" type="hidden" class="form-control" th:field="*{id}"/>
+		<div class="form-group">
 	        <div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
 	            <div th:each="detailedError : ${#fields.detailedErrors()}">
 		                <span th:text="${detailedError.message}"></span>
