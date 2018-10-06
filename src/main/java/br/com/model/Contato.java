@@ -1,20 +1,22 @@
 package br.com.model;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name="contatos")
 public class Contato implements Serializable {
 	
-	//gitkraken
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -24,31 +26,100 @@ public class Contato implements Serializable {
 	@NotEmpty(message="Nome é obrigatório")
 	private String nome;
 	
-	@NotEmpty(message="Email é obrigatório")
-	private String email;
-
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="contato")
+	private List<Telefone> telefones;
+	
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="contato")
+	private List<Email> emails;
+	
+	@ManyToOne
+	private Empresa empresa;
+	
+	@ManyToMany(cascade=CascadeType.ALL,mappedBy="contato")
+	private List<Departamento> departamentos;
+	
+	/**
+	 * @return id para acessar
+	 */
 	public Long getId() {
 		return id;
 	}
-	
+
+	/**
+	 * @param id para modificar
+	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
 
+	/**
+	 * @return nome para acessar
+	 */
 	public String getNome() {
 		return nome;
 	}
 
+	/**
+	 * @param nome para modificar
+	 */
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
-	public String getEmail() {
-		return email;
+	/**
+	 * @return telefones para acessar
+	 */
+	public List<Telefone> getTelefones() {
+		return telefones;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	/**
+	 * @param telefones para modificar
+	 */
+	public void setTelefones(List<Telefone> telefones) {
+		this.telefones = telefones;
+	}
+
+	/**
+	 * @return emails para acessar
+	 */
+	public List<Email> getEmails() {
+		return emails;
+	}
+
+	/**
+	 * @param emails para modificar
+	 */
+	public void setEmails(List<Email> emails) {
+		this.emails = emails;
+	}
+
+	/**
+	 * @return empresa para acessar
+	 */
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	/**
+	 * @param empresa para modificar
+	 */
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
+
+	/**
+	 * @return departamentos para acessar
+	 */
+	public List<Departamento> getDepartamentos() {
+		return departamentos;
+	}
+
+	/**
+	 * @param departamentos para modificar
+	 */
+	public void setDepartamentos(List<Departamento> departamentos) {
+		this.departamentos = departamentos;
 	}
 
 	@Override
