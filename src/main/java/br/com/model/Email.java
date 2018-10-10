@@ -27,6 +27,68 @@ public class Email implements Serializable{
 	@ManyToOne
 	private Contato contato;
 	
+	@ManyToOne
+	private Funcionario funcionario;
+	
+	@ManyToOne
+	private Empresa empresa;
+	
+	/**
+	 * @return id para acessar
+	 */
+	public Long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id para modificar
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return contato para acessar
+	 */
+	public Contato getContato() {
+		return contato;
+	}
+
+	/**
+	 * @param contato para modificar
+	 */
+	public void setContato(Contato contato) {
+		this.contato = contato;
+	}
+
+	/**
+	 * @return funcionario para acessar
+	 */
+	public Funcionario getFuncionario() {
+		return funcionario;
+	}
+
+	/**
+	 * @param funcionario para modificar
+	 */
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
+	}
+
+	/**
+	 * @return empresa para acessar
+	 */
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	/**
+	 * @param empresa para modificar
+	 */
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

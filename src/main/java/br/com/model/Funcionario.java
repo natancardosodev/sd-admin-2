@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -19,7 +20,7 @@ import javax.persistence.OneToOne;
  *
  */
 @Entity
-public class Empresa implements Serializable {
+public class Funcionario implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -27,17 +28,19 @@ public class Empresa implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToMany(cascade=CascadeType.ALL,mappedBy="empresa")
-	private List<Contato> contatos;
+	private String nome;
 	
-	@OneToMany(cascade=CascadeType.ALL,mappedBy="empresa")
+	@OneToOne(cascade=CascadeType.ALL,mappedBy="funcionario")
+	private Endereco endereco;
+	
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="funcionario")
 	private List<Telefone> telefones;
 	
-	@OneToMany(cascade=CascadeType.ALL,mappedBy="empresa")
-	private List<Departamento> departamentos;
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="funcionario")
+	private List<Email> emails;
 	
-	@OneToOne(cascade=CascadeType.ALL,mappedBy="empresa")
-	private Endereco endereco;
+	@ManyToMany(cascade=CascadeType.ALL,mappedBy="funcionario")
+	private List<Departamento> departamento;
 	
 	/**
 	 * @return id para acessar
@@ -54,17 +57,31 @@ public class Empresa implements Serializable {
 	}
 
 	/**
-	 * @return contatos para acessar
+	 * @return nome para acessar
 	 */
-	public List<Contato> getContatos() {
-		return contatos;
+	public String getNome() {
+		return nome;
 	}
 
 	/**
-	 * @param contatos para modificar
+	 * @param nome para modificar
 	 */
-	public void setContatos(List<Contato> contatos) {
-		this.contatos = contatos;
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	/**
+	 * @return endereco para acessar
+	 */
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	/**
+	 * @param endereco para modificar
+	 */
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 
 	/**
@@ -82,31 +99,31 @@ public class Empresa implements Serializable {
 	}
 
 	/**
-	 * @return departamentos para acessar
+	 * @return emails para acessar
 	 */
-	public List<Departamento> getDepartamentos() {
-		return departamentos;
+	public List<Email> getEmails() {
+		return emails;
 	}
 
 	/**
-	 * @param departamentos para modificar
+	 * @param emails para modificar
 	 */
-	public void setDepartamentos(List<Departamento> departamentos) {
-		this.departamentos = departamentos;
+	public void setEmails(List<Email> emails) {
+		this.emails = emails;
 	}
 
 	/**
-	 * @return endereco para acessar
+	 * @return departamento para acessar
 	 */
-	public Endereco getEndereco() {
-		return endereco;
+	public List<Departamento> getDepartamento() {
+		return departamento;
 	}
 
 	/**
-	 * @param endereco para modificar
+	 * @param departamento para modificar
 	 */
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
+	public void setDepartamento(List<Departamento> departamento) {
+		this.departamento = departamento;
 	}
 
 	@Override
@@ -125,7 +142,7 @@ public class Empresa implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Empresa other = (Empresa) obj;
+		Funcionario other = (Funcionario) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

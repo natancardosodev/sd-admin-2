@@ -20,7 +20,7 @@ import br.com.service.ContatoService;
 
 @Controller
 @RequestMapping("/contatos")
-public class ContatosController {
+public class ContatoController {
 	
 	@Autowired
 	private ContatoService service;

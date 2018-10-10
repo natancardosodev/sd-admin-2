@@ -9,27 +9,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.model.Contato;
-import br.com.repository.ContatoRepository;
+import br.com.model.Endereco;
+import br.com.repository.EnderecoRepository;
 
 /**
- * @author carlosbarbosagomesfilho
+ * @author natancardosodev
  *
  */
 @Service
-public class ContatoService {
-
+public class EnderecoService {
+	
 	@Autowired
-	private ContatoRepository repository;
+	private EnderecoRepository repository;
 	
 	@Transactional(readOnly=true)
-	public List<Contato> list(){
+	public List<Endereco> list(){
 		return this.repository.findAll();
 	}
 	
 	@Transactional
-	public void save(Contato contato) {
-		this.repository.save(contato);
+	public void save(Endereco endereco) {
+		this.repository.save(endereco);
 	}
 	
 	@Transactional
@@ -38,7 +38,8 @@ public class ContatoService {
 	}
 	
 	@Transactional(readOnly=true)
-	public Contato getById(Long id) {
+	public Endereco getById(Long id) {
 		return this.repository.findOne(id);
 	}
+
 }

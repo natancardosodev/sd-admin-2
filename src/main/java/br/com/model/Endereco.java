@@ -9,14 +9,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  * @author natancardosodev
  *
  */
 @Entity
-public class Telefone implements Serializable{
+public class Endereco implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -24,15 +24,12 @@ public class Telefone implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String descricao;
+	private String cidade;
 	
-	@ManyToOne
+	@OneToOne
 	private Empresa empresa;
 	
-	@ManyToOne
-	private Contato contato;
-	
-	@ManyToOne
+	@OneToOne
 	private Funcionario funcionario;
 	
 	/**
@@ -50,17 +47,17 @@ public class Telefone implements Serializable{
 	}
 
 	/**
-	 * @return descricao para acessar
+	 * @return cidade para acessar
 	 */
-	public String getDescricao() {
-		return descricao;
+	public String getCidade() {
+		return cidade;
 	}
 
 	/**
-	 * @param descricao para modificar
+	 * @param cidade para modificar
 	 */
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
 	}
 
 	/**
@@ -75,20 +72,6 @@ public class Telefone implements Serializable{
 	 */
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
-	}
-
-	/**
-	 * @return contato para acessar
-	 */
-	public Contato getContato() {
-		return contato;
-	}
-
-	/**
-	 * @param contato para modificar
-	 */
-	public void setContato(Contato contato) {
-		this.contato = contato;
 	}
 
 	/**
@@ -121,7 +104,7 @@ public class Telefone implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Telefone other = (Telefone) obj;
+		Endereco other = (Endereco) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
