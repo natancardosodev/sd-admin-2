@@ -4,19 +4,21 @@
 package br.com.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 
 /**
  * @author natancardosodev
  *
  */
 @Entity
-public class Email implements Serializable{
+public class Produto implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -24,18 +26,16 @@ public class Email implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@ManyToOne
-	private Contato contato;
+	private String nome;
 	
-	@ManyToOne
-	private Funcionario funcionario;
+	private String categoria;
 	
-	@ManyToOne
-	private Empresa empresa;
+	@Column(name="data_validade")
+	private Date dataValidade;
 	
-	@ManyToOne
+	@ManyToMany
 	private Fornecedor fornecedor;
-	
+
 	/**
 	 * @return id para acessar
 	 */
@@ -51,45 +51,45 @@ public class Email implements Serializable{
 	}
 
 	/**
-	 * @return contato para acessar
+	 * @return nome para acessar
 	 */
-	public Contato getContato() {
-		return contato;
+	public String getNome() {
+		return nome;
 	}
 
 	/**
-	 * @param contato para modificar
+	 * @param nome para modificar
 	 */
-	public void setContato(Contato contato) {
-		this.contato = contato;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	/**
-	 * @return funcionario para acessar
+	 * @return categoria para acessar
 	 */
-	public Funcionario getFuncionario() {
-		return funcionario;
+	public String getCategoria() {
+		return categoria;
 	}
 
 	/**
-	 * @param funcionario para modificar
+	 * @param categoria para modificar
 	 */
-	public void setFuncionario(Funcionario funcionario) {
-		this.funcionario = funcionario;
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
 	}
 
 	/**
-	 * @return empresa para acessar
+	 * @return dataValidade para acessar
 	 */
-	public Empresa getEmpresa() {
-		return empresa;
+	public Date getDataValidade() {
+		return dataValidade;
 	}
 
 	/**
-	 * @param empresa para modificar
+	 * @param dataValidade para modificar
 	 */
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
+	public void setDataValidade(Date dataValidade) {
+		this.dataValidade = dataValidade;
 	}
 
 	/**
@@ -105,7 +105,7 @@ public class Email implements Serializable{
 	public void setFornecedor(Fornecedor fornecedor) {
 		this.fornecedor = fornecedor;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -122,7 +122,7 @@ public class Email implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Email other = (Email) obj;
+		Produto other = (Produto) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

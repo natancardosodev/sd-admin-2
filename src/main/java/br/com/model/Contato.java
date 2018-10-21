@@ -38,6 +38,9 @@ public class Contato implements Serializable {
 	@ManyToMany(cascade=CascadeType.ALL,mappedBy="contato")
 	private List<Departamento> departamentos;
 	
+	@ManyToOne
+	private Fornecedor fornecedor;
+	
 	/**
 	 * @return id para acessar
 	 */
@@ -120,6 +123,20 @@ public class Contato implements Serializable {
 	 */
 	public void setDepartamentos(List<Departamento> departamentos) {
 		this.departamentos = departamentos;
+	}
+
+	/**
+	 * @return fornecedor para acessar
+	 */
+	public Fornecedor getFornecedor() {
+		return fornecedor;
+	}
+
+	/**
+	 * @param fornecedor para modificar
+	 */
+	public void setFornecedor(Fornecedor fornecedor) {
+		this.fornecedor = fornecedor;
 	}
 
 	@Override
