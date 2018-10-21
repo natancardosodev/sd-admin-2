@@ -29,14 +29,14 @@ public class ContatoController {
 	public ModelAndView listar() {
 		List<Contato> lista = service.list();
 		
-		ModelAndView modelAndView = new ModelAndView("pages/contato/contatos");		
-		modelAndView.addObject("contatos", lista);
+		ModelAndView mv = new ModelAndView("pages/contato/contatos");		
+		mv.addObject("contatos", lista);
 		
-		return modelAndView;
+		return mv;
 	}
 	
 	@GetMapping("/delete/{id}")
-	public ModelAndView excluir(@PathVariable Long id, RedirectAttributes attributes) {
+	public ModelAndView excluir(@PathVariable("id") Long id, RedirectAttributes attributes) {
 		ModelAndView mv = new ModelAndView("redirect:/contatos");
 		this.service.remove(id);
 		attributes.addFlashAttribute("removido", "Contato removido com sucesso!");
@@ -46,26 +46,27 @@ public class ContatoController {
 	@GetMapping("/edit/{id}")
 	public ModelAndView edit(@PathVariable("id") Long id) {
 		Contato contato = this.service.getById(id); 
-		System.out.println(contato.getNome());
+
 		return novo(contato);
 	}
 	
 	@GetMapping("/novo")
 	public ModelAndView novo(Contato contato) {
-		ModelAndView mv = new ModelAndView("pages/contato/novo_contato");
+		ModelAndView mv = new ModelAndView("pages/contato/novo");
 		mv.addObject("contato", contato);
 		return mv;
 	}
 	
 	@PostMapping("/save")
-	public ModelAndView salvar(@Valid Contato contato, BindingResult result, Model model, RedirectAttributes attributes){
+	public ModelAndView salvar(@Valid Contato contato, BindingResult result, 
+			Model model, RedirectAttributes attributes){
 		ModelAndView mv = new ModelAndView("redirect:/contatos");
 		
 		if (result.hasErrors()) {
 			return novo(contato);
 		}
 
-		attributes.addFlashAttribute("mensagem", "Contato salvo com sucesso");
+		attributes.addFlashAttribute("mensagem", "Contato salvo com sucesso!");
 		this.service.save(contato);
 		return mv;
 	}
