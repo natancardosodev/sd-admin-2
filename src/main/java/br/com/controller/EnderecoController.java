@@ -79,12 +79,11 @@ public class EnderecoController {
 //		ModelAndView mv = new ModelAndView("pages/endereco/novo");
 //		mv.addObject("endereco", endereco);
 //		return mv;
-		List<Endereco> enderecos = service.list();
 		List<Empresa> empresas = empresaService.list();
 		List<Funcionario> funcionarios = funcionarioService.list();
 		
 		HashMap<String, Object> dados = new HashMap<String, Object>();
-		dados.put("enderecos", enderecos);
+		dados.put("enderecos", endereco);
         dados.put("contatos", empresas);
         dados.put("funcionarios", funcionarios);
         

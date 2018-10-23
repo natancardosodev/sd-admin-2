@@ -37,9 +37,11 @@
                     <tr th:each="e: ${empresas}">
                         <td th:text="${e.id}"></td>
                         <td th:text="${e.nome}"></td>
+                        <td th:each="ed: ${enderecos}" 
+							th:text="${ed.rua}+ ' ' +${ed.bairro}"></td>
                         <td>
-                            <a th:href="@{empresas/edit/{id}(id=${c.id})}" type="button" class="btn btn-outline btn-warning">Editar</a>
-                            <a th:href="@{empresas/delete/{id}(id=${c.id})}" type="button" class="btn btn-outline btn-danger">Excluir</a>
+                            <a th:href="@{empresas/edit/{id}(id=${e.id})}" type="button" class="btn btn-outline btn-warning">Editar</a>
+                            <a th:href="@{empresas/delete/{id}(id=${e.id})}" type="button" class="btn btn-outline btn-danger">Excluir</a>
                         </td>
                     </tr>
                 </tbody>

@@ -42,7 +42,7 @@
 		<div class="form-group" th:classappend="${#fields.hasErrors('empresa')}? 'has-error'">
 			<label for="empresas">Empresa</label>
 			<select class="form-control" id="empresas" th:field="*{empresa}">
-				<option th:each="e: ${empresas}" th:value="${e.id}" th:text="${e.id}"></option>
+				<option th:each="e: ${empresas}" th:value="${e.id}" th:text="${e.nome}"></option>
 		    </select>		
 		</div>
 

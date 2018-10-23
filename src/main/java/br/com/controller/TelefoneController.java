@@ -87,13 +87,12 @@ public class TelefoneController {
 //		ModelAndView mv = new ModelAndView("pages/telefone/novo");
 //		mv.addObject("telefone", telefone);
 //		return mv;
-		List<Telefone> telefones = service.list();
 		List<Contato> contatos = contatoService.list();
 		List<Empresa> empresas = empresaService.list();
 		List<Funcionario> funcionarios = funcionarioService.list();
 		
 		HashMap<String, Object> dados = new HashMap<String, Object>();
-		dados.put("telefones", telefones);
+		dados.put("telefones", telefone);
         dados.put("contatos", contatos);
         dados.put("empresas", empresas);
         dados.put("funcionarios", funcionarios);

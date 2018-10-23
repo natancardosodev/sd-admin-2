@@ -20,7 +20,7 @@
             <span th:text="${mensagem}"></span>
         </div>
 
-        <form th:object="${contato}" th:action="@{/contatos/save}" method="POST" role="form">
+        <form th:object="${empresa}" th:action="@{/empresas/save}" method="POST" role="form">
 
             <input id="id" type="hidden" class="form-control" th:field="*{id}" />
             <div class="form-group">
@@ -35,10 +35,17 @@
                 <label>Nome</label>
                 <input id="name" class="form-control" type="text" name="nome" th:field="*{nome}" />
             </div>
+            
+            <div class="form-group" th:classappend="${#fields.hasErrors('endereco')}? 'has-error'">
+				<label for="enderecos">Endereço</label>
+				<select class="form-control" id="enderecos" th:field="*{endereco}">
+					<option th:each="ed: ${enderecos}" th:value="${ed.id}" th:text="${ed.rua}+' '+${ed.bairro}"></option>
+			    </select>		
+			</div>
 
             <div class="form-group">
                 <button type="submit" class="btn btn-outline btn-primary">Salvar</button>
-                <a th:href="@{/contatos}" type="button" class="btn btn-outline btn-success">Empresas</a>
+                <a th:href="@{/empresas}" type="button" class="btn btn-outline btn-success">Empresas</a>
             </div>
         </form>
     </div>

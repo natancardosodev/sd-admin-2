@@ -18,7 +18,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.model.Contato;
 import br.com.model.Email;
-import br.com.model.Empresa;
 import br.com.model.Fornecedor;
 import br.com.model.Funcionario;
 import br.com.service.ContatoService;

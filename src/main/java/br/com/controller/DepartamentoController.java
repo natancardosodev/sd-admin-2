@@ -78,11 +78,10 @@ public class DepartamentoController {
 //		mv.addObject("departamentos", departamento);
 //		
 //		return mv;
-		List<Departamento> departamentos = service.list();
 		List<Empresa> empresas = empresaService.list();
 		
 		HashMap<String, Object> dados = new HashMap<String, Object>();
-        dados.put("departamentos", departamentos);
+        dados.put("departamento", departamento);
         dados.put("empresas", empresas);
         
         return new ModelAndView("pages/departamento/novo",dados);

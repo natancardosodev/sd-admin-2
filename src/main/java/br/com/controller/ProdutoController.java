@@ -72,11 +72,10 @@ public class ProdutoController {
 //		ModelAndView mv = new ModelAndView("pages/produto/novo");
 //		mv.addObject("produto", produto);
 //		return mv;
-		List<Produto> produtos = service.list();
 		List<Fornecedor> fornecedores = fornecedorService.list();
 		
 		HashMap<String, Object> dados = new HashMap<String, Object>();
-		dados.put("produtos", produtos);
+		dados.put("produto", produto);
         dados.put("fornecedores", fornecedores);
         
         return new ModelAndView("pages/produto/novo",dados);
