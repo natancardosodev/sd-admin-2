@@ -30,7 +30,9 @@ public class Funcionario implements Serializable{
 	
 	private String nome;
 	
-	@OneToOne(cascade=CascadeType.ALL,mappedBy="funcionario")
+	private String matricula;
+	
+	@OneToOne
 	private Endereco endereco;
 	
 	@OneToMany(cascade=CascadeType.ALL,mappedBy="funcionario")
@@ -68,6 +70,20 @@ public class Funcionario implements Serializable{
 	 */
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	/**
+	 * @return matricula para acessar
+	 */
+	public String getMatricula() {
+		return matricula;
+	}
+
+	/**
+	 * @param matricula para modificar
+	 */
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
 	}
 
 	/**

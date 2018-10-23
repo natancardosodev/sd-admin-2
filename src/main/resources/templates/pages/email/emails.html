@@ -5,14 +5,13 @@
     <div id="page-wrapper">
         <div class="row top-header">
             <div class="col-lg-12">
-                <h2 class="page-header">Funcionários</h2>
+                <h2 class="page-header">Emails</h2>
             </div>
         </div>
 
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
-            <li class="breadcrumb-item active">Funcionario</li>
-
+            <li class="breadcrumb-item active">Email</li>
         </ol>
 
         <div class="alert alert-success" th:if="${not #strings.isEmpty(mensagem)}">
@@ -30,26 +29,30 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Nome</th>
-                        <th>Matrícula</th>
-                        <th>Endereço</th>
+                        <th>Descrição</th>
+                        <th>Contato</th>
+                        <th>Empresa</th>
+                        <th>Funcionario</th>
+                        <th>Fornecedor</th>
                         <th class="th-acoes">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="f: ${funcionarios}">
-                        <td th:text="${f.id}"></td>
-                        <td th:text="${f.nome}"></td>
-                        <td th:text="${f.matricula}"></td>
-                        <td th:each="e: ${endereco}" th:text="${e.rua}"></td>
+                    <tr th:each="e: ${emails}">
+                        <td th:text="${e.id}"></td>
+                        <td th:text="${e.descricao}"></td>
+                        <td th:each="c: ${contatos}" th:text="${c.nome}"></td>
+                        <td th:each="e: ${empresas}" th:text="${e.id}"></td>
+                        <td th:each="f: ${funcionarios}" th:text="${f.nome}"></td>
+                        <td th:each="fo: ${fornecedores}" th:text="${fo.nome}"></td>
                         <td>
-                            <a th:href="@{funcionarios/edit/{id}(id=${f.id})}" type="button" class="btn btn-outline btn-warning">Editar</a>
-                            <a th:href="@{funcionarios/delete/{id}(id=${f.id})}" type="button" class="btn btn-outline btn-danger">Excluir</a>
+                            <a th:href="@{emails/edit/{id}(id=${c.id})}" type="button" class="btn btn-outline btn-warning">Editar</a>
+                            <a th:href="@{emails/delete/{id}(id=${c.id})}" type="button" class="btn btn-outline btn-danger">Excluir</a>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <a th:href="@{/funcionarios/novo}" type="button" class="btn btn-outline btn-primary">Novo Funcionário</a>
+            <a th:href="@{/emails/novo}" type="button" class="btn btn-outline btn-primary">Novo Email</a>
         </div>
 
     </div>

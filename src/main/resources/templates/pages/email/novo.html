@@ -1,0 +1,75 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layoutPadrao">
+
+<section layout:fragment="conteudo">
+
+    <div id="page-wrapper">
+        <div class="row top-header">
+            <div class="col-lg-12">
+                <h1>Novo Email</h1>
+            </div>
+        </div>
+
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+            <li class="breadcrumb-item active">Emails</li>
+        </ol>
+        <!-- FORMULARIO DE CADASTRO -->
+
+        <div class="alert alert-success" th:if="${not #strings.isEmpty(mensagem)}">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+            <span th:text="${mensagem}"></span>
+        </div>
+
+        <form th:object="${contato}" th:action="@{/contatos/save}" method="POST" role="form">
+
+            <input id="id" type="hidden" class="form-control" th:field="*{id}" />
+            <div class="form-group">
+                <div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
+                    <div th:each="detailedError : ${#fields.detailedErrors()}">
+                        <span th:text="${detailedError.message}"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" th:classappend="${#fields.hasErrors('descricao')}? 'has-error'">
+                <label>Descrição</label>
+                <input id="name" class="form-control" type="text" name="descricao" th:field="*{descricao}" />
+            </div>
+
+            <div class="form-group" th:classappend="${#fields.hasErrors('contato')}? 'has-error'">
+                <label for="contatos">Contato</label>
+                <select class="form-control" id="contatos" th:field="*{contato}">
+				    <option th:each="c: ${contatos}" th:value="${c.id}" th:text="${c.nome}"></option>
+		        </select>
+            </div>
+
+            <div class="form-group" th:classappend="${#fields.hasErrors('empresa')}? 'has-error'">
+                <label for="empresas">Empresa</label>
+                <select class="form-control" id="empresas" th:field="*{empresa}">
+				    <option th:each="e: ${empresas}" th:value="${e.id}" th:text="${e.id}"></option>
+		        </select>
+            </div>
+
+            <div class="form-group" th:classappend="${#fields.hasErrors('funcionario')}? 'has-error'">
+                <label for="funcionarios">Funcionário</label>
+                <select class="form-control" id="funcionarios" th:field="*{funcionario}">
+                    <option th:each="f: ${funcionarios}" th:value="${f.id}" th:text="${f.nome}"></option>
+                </select>
+            </div>
+
+            <div class="form-group" th:classappend="${#fields.hasErrors('fornecedor')}? 'has-error'">
+                <label for="fornecedores">Fornecedor</label>
+                <select class="form-control" id="fornecedores" th:field="*{fornecedor}">
+                    <option th:each="fo: ${fornecedores}" th:value="${fo.id}" th:text="${fo.nome}"></option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-outline btn-primary">Salvar</button>
+                <a th:href="@{/emails}" type="button" class="btn btn-outline btn-success">Emails</a>
+            </div>
+        </form>
+    </div>
+</section>
+
+</html>

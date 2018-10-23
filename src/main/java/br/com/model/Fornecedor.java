@@ -30,10 +30,10 @@ public class Fornecedor implements Serializable{
 	
 	private String telefone;
 	
+	private String endereco;
+	
 	@OneToMany(cascade=CascadeType.ALL,mappedBy="fornecedor")
 	private List<Contato> contatos;
-	
-	private String endereco;
 	
 	@OneToMany(cascade=CascadeType.ALL,mappedBy="fornecedor")
 	private List<Email> emails;

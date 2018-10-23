@@ -5,6 +5,7 @@ package br.com.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,12 +25,18 @@ public class Endereco implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	private String rua;
+	
+	private String bairro;
+	
 	private String cidade;
 	
-	@OneToOne
+	private String estado;
+	
+	@OneToOne(cascade=CascadeType.ALL,mappedBy="endereco")
 	private Empresa empresa;
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL,mappedBy="endereco")
 	private Funcionario funcionario;
 	
 	/**
@@ -47,6 +54,34 @@ public class Endereco implements Serializable{
 	}
 
 	/**
+	 * @return rua para acessar
+	 */
+	public String getRua() {
+		return rua;
+	}
+
+	/**
+	 * @param rua para modificar
+	 */
+	public void setRua(String rua) {
+		this.rua = rua;
+	}
+
+	/**
+	 * @return bairro para acessar
+	 */
+	public String getBairro() {
+		return bairro;
+	}
+
+	/**
+	 * @param bairro para modificar
+	 */
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+	/**
 	 * @return cidade para acessar
 	 */
 	public String getCidade() {
@@ -58,6 +93,20 @@ public class Endereco implements Serializable{
 	 */
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
+	}
+
+	/**
+	 * @return estado para acessar
+	 */
+	public String getEstado() {
+		return estado;
+	}
+
+	/**
+	 * @param estado para modificar
+	 */
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 
 	/**

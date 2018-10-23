@@ -3,6 +3,7 @@
  */
 package br.com.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -19,7 +20,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.model.Departamento;
+import br.com.model.Empresa;
 import br.com.service.DepartamentoService;
+import br.com.service.EmpresaService;
 
 /**
  * @author natancardosodev
@@ -32,14 +35,25 @@ public class DepartamentoController {
 	@Autowired
 	private DepartamentoService service;
 	
+	@Autowired
+	private EmpresaService empresaService;
+	
 	@GetMapping
 	public ModelAndView listar() {
-		List<Departamento> lista = service.list();
+//		List<Departamento> lista = service.list();
+//		
+//		ModelAndView mv = new ModelAndView("pages/departamento/departamentos");
+//		mv.addObject("departamentos", lista);
+//		
+//		return mv;
+		List<Departamento> departamentos = service.list();
+		List<Empresa> empresas = empresaService.list();
 		
-		ModelAndView mv = new ModelAndView("pages/departamento/departamentos");
-		mv.addObject("departamentos", lista);
-		
-		return mv;
+		HashMap<String, Object> dados = new HashMap<String, Object>();
+        dados.put("departamentos", departamentos);
+        dados.put("empresas", empresas);
+        
+        return new ModelAndView("pages/departamento/departamentos",dados);
 	}
 	
 	@GetMapping("/delete/{id}")
@@ -60,10 +74,18 @@ public class DepartamentoController {
 	
 	@GetMapping("/novo")
 	public ModelAndView novo(Departamento departamento) {
-		ModelAndView mv = new ModelAndView("pages/departamento/novo");
-		mv.addObject("departamentos", departamento);
+//		ModelAndView mv = new ModelAndView("pages/departamento/novo");
+//		mv.addObject("departamentos", departamento);
+//		
+//		return mv;
+		List<Departamento> departamentos = service.list();
+		List<Empresa> empresas = empresaService.list();
 		
-		return mv;
+		HashMap<String, Object> dados = new HashMap<String, Object>();
+        dados.put("departamentos", departamentos);
+        dados.put("empresas", empresas);
+        
+        return new ModelAndView("pages/departamento/novo",dados);
 	}
 	
 	@PostMapping("/save")

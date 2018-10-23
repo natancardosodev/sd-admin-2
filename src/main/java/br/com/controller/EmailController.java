@@ -1,5 +1,6 @@
 package br.com.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -15,8 +16,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.com.model.Contato;
 import br.com.model.Email;
+import br.com.model.Empresa;
+import br.com.model.Fornecedor;
+import br.com.model.Funcionario;
+import br.com.service.ContatoService;
 import br.com.service.EmailService;
+import br.com.service.FornecedorService;
+import br.com.service.FuncionarioService;
 /**
  * @author natancardosodev
  *
@@ -28,14 +36,35 @@ public class EmailController {
 	@Autowired
 	private EmailService service;
 	
+	@Autowired
+	private ContatoService contatoService;
+	
+	@Autowired
+	private FornecedorService fornecedorService;
+	
+	@Autowired
+	private FuncionarioService funcionarioService;
+	
 	@GetMapping
 	public ModelAndView listar() {
-		List<Email> lista = service.list();
+//		List<Email> lista = service.list();
+//		
+//		ModelAndView mv = new ModelAndView("pages/email/emails");		
+//		mv.addObject("emails", lista);
+//		
+//		return mv;
+		List<Email> emails = service.list();
+		List<Contato> contatos = contatoService.list();
+		List<Fornecedor> fornecedores = fornecedorService.list();
+		List<Funcionario> funcionarios = funcionarioService.list();
 		
-		ModelAndView mv = new ModelAndView("pages/email/emails");		
-		mv.addObject("emails", lista);
-		
-		return mv;
+		HashMap<String, Object> dados = new HashMap<String, Object>();
+		dados.put("emails", emails);
+        dados.put("contatos", contatos);
+        dados.put("fornecedores", fornecedores);
+        dados.put("funcionarios", funcionarios);
+        
+        return new ModelAndView("pages/email/emails",dados);
 	}
 	
 	@GetMapping("/delete/{id}")
@@ -55,9 +84,20 @@ public class EmailController {
 	
 	@GetMapping("/novo")
 	public ModelAndView novo(Email email) {
-		ModelAndView mv = new ModelAndView("pages/email/novo");
-		mv.addObject("email", email);
-		return mv;
+//		ModelAndView mv = new ModelAndView("pages/email/novo");
+//		mv.addObject("email", email);
+//		return mv;
+		List<Contato> contatos = contatoService.list();
+		List<Fornecedor> fornecedores = fornecedorService.list();
+		List<Funcionario> funcionarios = funcionarioService.list();
+		
+		HashMap<String, Object> dados = new HashMap<String, Object>();
+		dados.put("email", email);
+        dados.put("contatos", contatos);
+        dados.put("fornecedores", fornecedores);
+        dados.put("funcionarios", funcionarios);
+        
+        return new ModelAndView("pages/email/novo",dados);
 	}
 	
 	@PostMapping("/save")

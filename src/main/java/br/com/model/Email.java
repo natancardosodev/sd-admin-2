@@ -24,6 +24,8 @@ public class Email implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	private String descricao;
+	
 	@ManyToOne
 	private Contato contato;
 	
@@ -48,6 +50,20 @@ public class Email implements Serializable{
 	 */
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	/**
+	 * @return descricao para acessar
+	 */
+	public String getDescricao() {
+		return descricao;
+	}
+
+	/**
+	 * @param descricao para modificar
+	 */
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	/**

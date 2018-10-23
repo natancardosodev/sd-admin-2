@@ -5,13 +5,13 @@
     <div id="page-wrapper">
         <div class="row top-header">
             <div class="col-lg-12">
-                <h2 class="page-header">Funcionários</h2>
+                <h2 class="page-header">Produtos</h2>
             </div>
         </div>
 
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
-            <li class="breadcrumb-item active">Funcionario</li>
+            <li class="breadcrumb-item active">Produto</li>
 
         </ol>
 
@@ -31,25 +31,27 @@
                     <tr>
                         <th>Id</th>
                         <th>Nome</th>
-                        <th>Matrícula</th>
-                        <th>Endereço</th>
+                        <th>Categoria</th>
+                        <th>Data de Validade</th>
+                        <th>Fornecedor</th>
                         <th class="th-acoes">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="f: ${funcionarios}">
-                        <td th:text="${f.id}"></td>
-                        <td th:text="${f.nome}"></td>
-                        <td th:text="${f.matricula}"></td>
-                        <td th:each="e: ${endereco}" th:text="${e.rua}"></td>
+                    <tr th:each="p: ${produtos}">
+                        <td th:text="${p.id}"></td>
+                        <td th:text="${p.nome}"></td>
+                        <td th:text="${p.categoria}"></td>
+                        <td th:text="${p.dataValidade}"></td>
+                        <td th:each="f: ${fornecedores}" th:text="${f.nome}"></td>
                         <td>
-                            <a th:href="@{funcionarios/edit/{id}(id=${f.id})}" type="button" class="btn btn-outline btn-warning">Editar</a>
-                            <a th:href="@{funcionarios/delete/{id}(id=${f.id})}" type="button" class="btn btn-outline btn-danger">Excluir</a>
+                            <a th:href="@{produtos/edit/{id}(id=${p.id})}" type="button" class="btn btn-outline btn-warning">Editar</a>
+                            <a th:href="@{produtos/delete/{id}(id=${p.id})}" type="button" class="btn btn-outline btn-danger">Excluir</a>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <a th:href="@{/funcionarios/novo}" type="button" class="btn btn-outline btn-primary">Novo Funcionário</a>
+            <a th:href="@{/produtos/novo}" type="button" class="btn btn-outline btn-primary">Novo Produto</a>
         </div>
 
     </div>

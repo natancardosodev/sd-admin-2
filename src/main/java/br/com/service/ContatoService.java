@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.model.Contato;
+import br.com.model.Empresa;
+import br.com.model.Fornecedor;
 import br.com.repository.ContatoRepository;
 
 /**
@@ -41,4 +43,15 @@ public class ContatoService {
 	public Contato getById(Long id) {
 		return this.repository.findOne(id);
 	}
+	
+	@Transactional(readOnly=true)
+	public List<Empresa> listarEmpresas(){
+		return this.repository.findByEmpresas();
+	}
+	
+	@Transactional(readOnly=true)
+	public List<Fornecedor> listarFornecedores(){
+		return this.repository.findByFornecedor();
+	}
+	
 }

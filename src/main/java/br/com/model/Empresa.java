@@ -27,6 +27,11 @@ public class Empresa implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	private String nome;
+	
+	@OneToOne
+	private Endereco endereco;
+	
 	@OneToMany(cascade=CascadeType.ALL,mappedBy="empresa")
 	private List<Contato> contatos;
 	
@@ -35,9 +40,6 @@ public class Empresa implements Serializable {
 	
 	@OneToMany(cascade=CascadeType.ALL,mappedBy="empresa")
 	private List<Departamento> departamentos;
-	
-	@OneToOne(cascade=CascadeType.ALL,mappedBy="empresa")
-	private Endereco endereco;
 	
 	/**
 	 * @return id para acessar
@@ -51,6 +53,20 @@ public class Empresa implements Serializable {
 	 */
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	/**
+	 * @return nome para acessar
+	 */
+	public String getNome() {
+		return nome;
+	}
+
+	/**
+	 * @param nome para modificar
+	 */
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	/**

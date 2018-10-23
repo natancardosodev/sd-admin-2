@@ -1,5 +1,6 @@
 package br.com.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -16,7 +17,11 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.model.Contato;
+import br.com.model.Empresa;
+import br.com.model.Fornecedor;
 import br.com.service.ContatoService;
+import br.com.service.EmpresaService;
+import br.com.service.FornecedorService;
 
 @Controller
 @RequestMapping("/contatos")
@@ -25,14 +30,31 @@ public class ContatoController {
 	@Autowired
 	private ContatoService service;
 	
+	@Autowired
+	private EmpresaService empresaService;
+	
+	@Autowired
+	private FornecedorService fornecedorService;
+	
 	@GetMapping
 	public ModelAndView listar() {
-		List<Contato> lista = service.list();
+//		List<Contato> lista = service.list();
+//		
+//		ModelAndView mv = new ModelAndView("pages/contato/contatos");		
+//		mv.addObject("contatos", lista);
+//		
+//		return mv;
+		List<Contato> contatos = service.list();
+		List<Empresa> empresas = empresaService.list();
+		List<Fornecedor> fornecedor = fornecedorService.list();
 		
-		ModelAndView mv = new ModelAndView("pages/contato/contatos");		
-		mv.addObject("contatos", lista);
+		HashMap<String, Object> dados = new HashMap<String, Object>();
+        dados.put("contatos", contatos);
+        dados.put("empresas", empresas);
+        dados.put("fornecedores", fornecedor);
+        
+        return new ModelAndView("pages/contato/contatos",dados);
 		
-		return mv;
 	}
 	
 	@GetMapping("/delete/{id}")
@@ -52,9 +74,20 @@ public class ContatoController {
 	
 	@GetMapping("/novo")
 	public ModelAndView novo(Contato contato) {
-		ModelAndView mv = new ModelAndView("pages/contato/novo");
-		mv.addObject("contato", contato);
-		return mv;
+//		ModelAndView mv = new ModelAndView("pages/contato/novo");
+//		mv.addObject("contato", contato);
+//		List<Empresa> empresas = service.listarEmpresas();
+		
+		List<Empresa> empresas = empresaService.list();
+		List<Fornecedor> fornecedor = fornecedorService.list();
+		
+		HashMap<String, Object> dados = new HashMap<String, Object>();
+        dados.put("contato", contato);
+        dados.put("empresas", empresas);
+        dados.put("fornecedores", fornecedor);
+        
+        return new ModelAndView("pages/contato/novo",dados);
+//		return mv;  
 	}
 	
 	@PostMapping("/save")

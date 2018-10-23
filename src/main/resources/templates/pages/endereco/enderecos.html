@@ -5,13 +5,13 @@
     <div id="page-wrapper">
         <div class="row top-header">
             <div class="col-lg-12">
-                <h2 class="page-header">Funcionários</h2>
+                <h2 class="page-header">Endereços</h2>
             </div>
         </div>
 
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
-            <li class="breadcrumb-item active">Funcionario</li>
+            <li class="breadcrumb-item active">Endereço</li>
 
         </ol>
 
@@ -30,26 +30,28 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Nome</th>
-                        <th>Matrícula</th>
-                        <th>Endereço</th>
+                        <th>Rua</th>
+                        <th>Bairro</th>
+                        <th>Cidade</th>
+                        <th>Estado</th>
                         <th class="th-acoes">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="f: ${funcionarios}">
-                        <td th:text="${f.id}"></td>
-                        <td th:text="${f.nome}"></td>
-                        <td th:text="${f.matricula}"></td>
-                        <td th:each="e: ${endereco}" th:text="${e.rua}"></td>
+                    <tr th:each="e: ${enderecos}">
+                        <td th:text="${e.id}"></td>
+                        <td th:text="${e.rua}"></td>
+                        <td th:text="${e.bairro}"></td>
+                        <td th:text="${e.cidade}"></td>
+                        <td th:text="${e.estado}"></td>
                         <td>
-                            <a th:href="@{funcionarios/edit/{id}(id=${f.id})}" type="button" class="btn btn-outline btn-warning">Editar</a>
-                            <a th:href="@{funcionarios/delete/{id}(id=${f.id})}" type="button" class="btn btn-outline btn-danger">Excluir</a>
+                            <a th:href="@{enderecos/edit/{id}(id=${e.id})}" type="button" class="btn btn-outline btn-warning">Editar</a>
+                            <a th:href="@{enderecos/delete/{id}(id=${e.id})}" type="button" class="btn btn-outline btn-danger">Excluir</a>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <a th:href="@{/funcionarios/novo}" type="button" class="btn btn-outline btn-primary">Novo Funcionário</a>
+            <a th:href="@{/enderecos/novo}" type="button" class="btn btn-outline btn-primary">Novo Endereço</a>
         </div>
 
     </div>
