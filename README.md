@@ -22,6 +22,12 @@ O projeto faz parte da disciplina 'Desenvolvimento de Aplicações Avançadas' e
 - Navegue até o seu diretório de projetos de programação
 - Faça o clone do projeto para a sua máquina local: ```git clone https://github.com/natancardosodev/sd-admin-2.git``` 
 
+### *Banco de dados*
+- Inicialize o SGBD MySQL e crie o schema (database): ```projetoacme```
+- Está configurado com a porta 3306, usuário: "root" e senha: "" (vazia). Se for preciso alterar, o arquivo de configuração é o ```aplication.properties``` localizado em ```src/main/resources```
+- Pode utilizar o [XAMMP](https://www.apachefriends.org/download.html) para o MySQL
+- A própria aplicação criará as tabelas através do mapeamento do Hibernate, e populará dados que estão gravados no arquivo ```data.sql``` localizado em ```src/main/resources```
+
 ### *Atualização do Maven e compilação*
 Pode ser feito tanto pelo terminal quanto por uma IDE Java, a seguir as duas opções, finalizando na execução.
 

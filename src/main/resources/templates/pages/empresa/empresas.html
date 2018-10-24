@@ -25,11 +25,12 @@
         </div>
 
         <div class="table-responsive">
-            <table class="table table-striped">
+            <table class="table table-striped table-hover">
                 <thead>
                     <tr>
                         <th>Id</th>
                         <th>Nome</th>
+                        <th>Endereço</th>
                         <th class="th-acoes">Ações</th>
                     </tr>
                 </thead>
@@ -37,8 +38,7 @@
                     <tr th:each="e: ${empresas}">
                         <td th:text="${e.id}"></td>
                         <td th:text="${e.nome}"></td>
-                        <td th:each="ed: ${enderecos}" 
-							th:text="${ed.rua}+ ' ' +${ed.bairro}"></td>
+                        <td th:text="${e.endereco.rua}+ ' - ' +${e.endereco.cidade}"></td>
                         <td>
                             <a th:href="@{empresas/edit/{id}(id=${e.id})}" type="button" class="btn btn-outline btn-warning">Editar</a>
                             <a th:href="@{empresas/delete/{id}(id=${e.id})}" type="button" class="btn btn-outline btn-danger">Excluir</a>

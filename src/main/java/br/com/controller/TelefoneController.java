@@ -18,11 +18,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.model.Contato;
 import br.com.model.Empresa;
-import br.com.model.Endereco;
+import br.com.model.Fornecedor;
 import br.com.model.Funcionario;
 import br.com.model.Telefone;
 import br.com.service.ContatoService;
 import br.com.service.EmpresaService;
+import br.com.service.FornecedorService;
 import br.com.service.FuncionarioService;
 import br.com.service.TelefoneService;
 /**
@@ -45,26 +46,17 @@ public class TelefoneController {
 	@Autowired
 	private FuncionarioService funcionarioService;
 	
+	@Autowired 
+	private FornecedorService fornecedorService;
+	
 	@GetMapping
 	public ModelAndView listar() {
-//		List<Telefone> lista = service.list();
-//		
-//		ModelAndView mv = new ModelAndView("pages/telefone/telefones");		
-//		mv.addObject("telefones", lista);
-//		
-//		return mv;
-		List<Telefone> telefones = service.list();
-		List<Contato> contatos = contatoService.list();
-		List<Empresa> empresas = empresaService.list();
-		List<Funcionario> funcionarios = funcionarioService.list();
+		List<Telefone> lista = service.list();
 		
-		HashMap<String, Object> dados = new HashMap<String, Object>();
-		dados.put("telefones", telefones);
-        dados.put("contatos", contatos);
-        dados.put("empresas", empresas);
-        dados.put("funcionarios", funcionarios);
-        
-        return new ModelAndView("pages/telefone/telefones",dados);
+		ModelAndView mv = new ModelAndView("pages/telefone/telefones");		
+		mv.addObject("telefones", lista);
+		
+		return mv;
 	}
 	
 	@GetMapping("/delete/{id}")
@@ -84,20 +76,19 @@ public class TelefoneController {
 	
 	@GetMapping("/novo")
 	public ModelAndView novo(Telefone telefone) {
-//		ModelAndView mv = new ModelAndView("pages/telefone/novo");
-//		mv.addObject("telefone", telefone);
-//		return mv;
 		List<Contato> contatos = contatoService.list();
 		List<Empresa> empresas = empresaService.list();
 		List<Funcionario> funcionarios = funcionarioService.list();
+		List<Fornecedor> fornecedores = fornecedorService.list();
 		
 		HashMap<String, Object> dados = new HashMap<String, Object>();
-		dados.put("telefones", telefone);
+		dados.put("telefone", telefone);
         dados.put("contatos", contatos);
         dados.put("empresas", empresas);
         dados.put("funcionarios", funcionarios);
+        dados.put("fornecedores", fornecedores);
         
-        return new ModelAndView("pages/telefone/novos",dados);
+        return new ModelAndView("pages/telefone/novo",dados);
 	}
 	
 	@PostMapping("/save")

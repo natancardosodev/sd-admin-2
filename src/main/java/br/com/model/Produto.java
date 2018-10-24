@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 /**
  * @author natancardosodev
  *
@@ -30,10 +32,13 @@ public class Produto implements Serializable{
 	
 	private String nome;
 	
+	private Integer codigo;
+	
 	private String categoria;
 	
 	@Column(name="data_validade")
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date dataValidade;
 	
 	@ManyToOne
@@ -65,6 +70,20 @@ public class Produto implements Serializable{
 	 */
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	/**
+	 * @return codigo para acessar
+	 */
+	public Integer getCodigo() {
+		return codigo;
+	}
+
+	/**
+	 * @param codigo para modificar
+	 */
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
 	}
 
 	/**

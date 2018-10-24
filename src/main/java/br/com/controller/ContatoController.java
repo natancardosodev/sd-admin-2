@@ -38,23 +38,12 @@ public class ContatoController {
 	
 	@GetMapping
 	public ModelAndView listar() {
-//		List<Contato> lista = service.list();
-//		
-//		ModelAndView mv = new ModelAndView("pages/contato/contatos");		
-//		mv.addObject("contatos", lista);
-//		
-//		return mv;
-		List<Contato> contatos = service.list();
-		List<Empresa> empresas = empresaService.list();
-		List<Fornecedor> fornecedor = fornecedorService.list();
+		List<Contato> lista = service.list();
 		
-		HashMap<String, Object> dados = new HashMap<String, Object>();
-        dados.put("contatos", contatos);
-        dados.put("empresas", empresas);
-        dados.put("fornecedores", fornecedor);
-        
-        return new ModelAndView("pages/contato/contatos",dados);
+		ModelAndView mv = new ModelAndView("pages/contato/contatos");		
+		mv.addObject("contatos", lista);
 		
+		return mv;
 	}
 	
 	@GetMapping("/delete/{id}")
@@ -74,10 +63,6 @@ public class ContatoController {
 	
 	@GetMapping("/novo")
 	public ModelAndView novo(Contato contato) {
-//		ModelAndView mv = new ModelAndView("pages/contato/novo");
-//		mv.addObject("contato", contato);
-//		List<Empresa> empresas = service.listarEmpresas();
-		
 		List<Empresa> empresas = empresaService.list();
 		List<Fornecedor> fornecedor = fornecedorService.list();
 		
@@ -87,7 +72,6 @@ public class ContatoController {
         dados.put("fornecedores", fornecedor);
         
         return new ModelAndView("pages/contato/novo",dados);
-//		return mv;  
 	}
 	
 	@PostMapping("/save")

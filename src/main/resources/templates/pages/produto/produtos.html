@@ -26,11 +26,12 @@
         </div>
 
         <div class="table-responsive">
-            <table class="table table-striped">
+            <table class="table table-striped table-hover">
                 <thead>
                     <tr>
                         <th>Id</th>
                         <th>Nome</th>
+                        <th>Código</th>
                         <th>Categoria</th>
                         <th>Data de Validade</th>
                         <th>Fornecedor</th>
@@ -41,9 +42,10 @@
                     <tr th:each="p: ${produtos}">
                         <td th:text="${p.id}"></td>
                         <td th:text="${p.nome}"></td>
+                        <td th:text="${p.codigo}"></td>
                         <td th:text="${p.categoria}"></td>
-                        <td th:text="${p.dataValidade}"></td>
-                        <td th:each="f: ${fornecedores}" th:text="${f.nome}"></td>
+                        <td th:text="${#dates.format(p.dataValidade, 'dd/MM/yyyy')}"></td>
+                        <td th:text="${p.fornecedor.nome}"></td>
                         <td>
                             <a th:href="@{produtos/edit/{id}(id=${p.id})}" type="button" class="btn btn-outline btn-warning">Editar</a>
                             <a th:href="@{produtos/delete/{id}(id=${p.id})}" type="button" class="btn btn-outline btn-danger">Excluir</a>

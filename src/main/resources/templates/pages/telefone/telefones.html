@@ -26,14 +26,15 @@
         </div>
 
         <div class="table-responsive">
-            <table class="table table-striped">
+            <table class="table table-striped table-hover">
                 <thead>
                     <tr>
                         <th>Id</th>
                         <th>Descrição</th>
                         <th>Contato</th>
                         <th>Empresa</th>
-                        <th>Funcionario</th>
+                        <th>Funcionário</th>
+                        <th>Fornecedor</th>
                         <th class="th-acoes">Ações</th>
                     </tr>
                 </thead>
@@ -41,12 +42,13 @@
                     <tr th:each="t: ${telefones}">
                         <td th:text="${t.id}"></td>
                         <td th:text="${t.descricao}"></td>
-                        <td th:each="c: ${contatos}" th:text="${c.nome}"></td>
-                        <td th:each="e: ${empresas}" th:text="${e.nome}"></td>
-                        <td th:each="f: ${funcionario}" th:text="${f.nome}"></td>
+                        <td th:text="${t.contato.nome}"></td>
+                        <td th:text="${t.empresa.nome}"></td>
+                        <td th:text="${t.funcionario.nome}"></td>
+                        <td th:text="${t.fornecedor.nome}"></td>
                         <td>
-                            <a th:href="@{contatos/edit/{id}(id=${t.id})}" type="button" class="btn btn-outline btn-warning">Editar</a>
-                            <a th:href="@{contatos/delete/{id}(id=${t.id})}" type="button" class="btn btn-outline btn-danger">Excluir</a>
+                            <a th:href="@{telefones/edit/{id}(id=${t.id})}" type="button" class="btn btn-outline btn-warning">Editar</a>
+                            <a th:href="@{telefones/delete/{id}(id=${t.id})}" type="button" class="btn btn-outline btn-danger">Excluir</a>
                         </td>
                     </tr>
                 </tbody>

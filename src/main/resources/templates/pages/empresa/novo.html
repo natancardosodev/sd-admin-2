@@ -5,7 +5,7 @@
     <div id="page-wrapper">
         <div class="row top-header">
             <div class="col-lg-12">
-                <h1>Nova Empresa</h1>
+                <h1>Cadastro de Empresa</h1>
             </div>
         </div>
 
@@ -39,7 +39,7 @@
             <div class="form-group" th:classappend="${#fields.hasErrors('endereco')}? 'has-error'">
 				<label for="enderecos">Endereço</label>
 				<select class="form-control" id="enderecos" th:field="*{endereco}">
-					<option th:each="ed: ${enderecos}" th:value="${ed.id}" th:text="${ed.rua}+' '+${ed.bairro}"></option>
+					<option th:each="ed: ${enderecos}" th:value="${ed.id}" th:text="${ed.rua}+' - '+${ed.cidade}"></option>
 			    </select>		
 			</div>
 

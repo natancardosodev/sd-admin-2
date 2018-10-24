@@ -5,7 +5,7 @@
     <div id="page-wrapper">
         <div class="row top-header">
             <div class="col-lg-12">
-                <h1>Novo Telefone</h1>
+                <h1>Cadastro de Telefone</h1>
             </div>
         </div>
 
@@ -46,15 +46,22 @@
             <div class="form-group" th:classappend="${#fields.hasErrors('empresa')}? 'has-error'">
                 <label for="empresas">Empresa</label>
                 <select class="form-control" id="empresas" th:field="*{empresa}">
-					<option th:each="e: ${empresas}" th:value="${e.id}" th:text="${e.id}"></option>
+					<option th:each="e: ${empresas}" th:value="${e.id}" th:text="${e.nome}"></option>
 				</select>
+            </div>
+            
+            <div class="form-group" th:classappend="${#fields.hasErrors('funcionario')}? 'has-error'">
+                <label for="funcionarios">Funcionário</label>
+                <select class="form-control" id="funcionarios" th:field="*{funcionario}">
+                    <option th:each="fu: ${funcionarios}" th:value="${fu.id}" th:text="${fu.nome}"></option>
+                </select>
             </div>
 
             <div class="form-group" th:classappend="${#fields.hasErrors('fornecedor')}? 'has-error'">
                 <label for="fornecedores">Fornecedor</label>
                 <select class="form-control" id="fornecedores" th:field="*{fornecedor}">
-                    <option th:each="f: ${fornecedores}" th:value="${f.id}" th:text="${f.nome}"></option>
-                </select>
+					<option th:each="f: ${fornecedores}" th:value="${f.id}" th:text="${f.nome}"></option>
+				</select>
             </div>
 
             <div class="form-group">

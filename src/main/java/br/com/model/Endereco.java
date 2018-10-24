@@ -7,6 +7,7 @@ import java.io.Serializable;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,10 +34,10 @@ public class Endereco implements Serializable{
 	
 	private String estado;
 	
-	@OneToOne(cascade=CascadeType.ALL,mappedBy="endereco")
+	@OneToOne(cascade=CascadeType.ALL,mappedBy="endereco",fetch = FetchType.LAZY,optional = true)
 	private Empresa empresa;
 	
-	@OneToOne(cascade=CascadeType.ALL,mappedBy="endereco")
+	@OneToOne(cascade=CascadeType.ALL,mappedBy="endereco",fetch = FetchType.LAZY,optional = true)
 	private Funcionario funcionario;
 	
 	/**

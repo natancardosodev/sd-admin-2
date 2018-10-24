@@ -41,22 +41,12 @@ public class EnderecoController {
 	
 	@GetMapping
 	public ModelAndView listar() {
-//		List<Endereco> lista = service.list();
-//		
-//		ModelAndView mv = new ModelAndView("pages/endereco/enderecos");		
-//		mv.addObject("enderecos", lista);
-//		
-//		return mv;
-		List<Endereco> enderecos = service.list();
-		List<Empresa> empresas = empresaService.list();
-		List<Funcionario> funcionarios = funcionarioService.list();
+		List<Endereco> lista = service.list();
+
+		ModelAndView mv = new ModelAndView("pages/endereco/enderecos");		
+		mv.addObject("enderecos", lista);
 		
-		HashMap<String, Object> dados = new HashMap<String, Object>();
-		dados.put("enderecos", enderecos);
-        dados.put("contatos", empresas);
-        dados.put("funcionarios", funcionarios);
-        
-        return new ModelAndView("pages/endereco/enderecos",dados);
+		return mv;
 	}
 	
 	@GetMapping("/delete/{id}")
@@ -76,18 +66,15 @@ public class EnderecoController {
 	
 	@GetMapping("/novo")
 	public ModelAndView novo(Endereco endereco) {
-//		ModelAndView mv = new ModelAndView("pages/endereco/novo");
-//		mv.addObject("endereco", endereco);
-//		return mv;
 		List<Empresa> empresas = empresaService.list();
 		List<Funcionario> funcionarios = funcionarioService.list();
 		
 		HashMap<String, Object> dados = new HashMap<String, Object>();
-		dados.put("enderecos", endereco);
+		dados.put("endereco", endereco);
         dados.put("contatos", empresas);
         dados.put("funcionarios", funcionarios);
         
-        return new ModelAndView("pages/endereco/novos",dados);
+        return new ModelAndView("pages/endereco/novo",dados);
 	}
 	
 	@PostMapping("/save")

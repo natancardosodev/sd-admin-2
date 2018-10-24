@@ -5,13 +5,13 @@
     <div id="page-wrapper">
         <div class="row top-header">
             <div class="col-lg-12">
-                <h1>Novo Telefone</h1>
+                <h1>Cadastro de Produtos</h1>
             </div>
         </div>
 
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
-            <li class="breadcrumb-item active">Telefone</li>
+            <li class="breadcrumb-item active">Produtos</li>
         </ol>
         <!-- FORMULARIO DE CADASTRO -->
 
@@ -31,23 +31,31 @@
                 </div>
             </div>
 
-            <div class="form-group" th:classappend="${#fields.hasErrors('descricao')}? 'has-error'">
-                <label>Descrição</label>
-                <input id="descricao" class="form-control" type="text" name="descricao" th:field="*{descricao}" />
+            <div class="form-group" th:classappend="${#fields.hasErrors('nome')}? 'has-error'">
+                <label>Nome</label>
+                <input id="nome" class="form-control" type="text" name="nome" th:field="*{nome}"></input>
             </div>
-
-            <div class="form-group" th:classappend="${#fields.hasErrors('contato')}? 'has-error'">
-                <label for="contatos">Contato</label>
-                <select class="form-control" id="contatos" th:field="*{contato}">
-					<option th:each="c: ${contatos}" th:value="${c.id}" th:text="${c.nome}"></option>
-				</select>
+            
+            <div class="form-group" th:classappend="${#fields.hasErrors('codigo')}? 'has-error'">
+                <label>Código</label>
+                <input id="codigo" class="form-control" type="text" name="codigo" th:field="*{codigo}"></input>
             </div>
-
-            <div class="form-group" th:classappend="${#fields.hasErrors('empresa')}? 'has-error'">
-                <label for="empresas">Empresa</label>
-                <select class="form-control" id="empresas" th:field="*{empresa}">
-					<option th:each="e: ${empresas}" th:value="${e.id}" th:text="${e.id}"></option>
-				</select>
+            
+            <div class="form-group" th:classappend="${#fields.hasErrors('categoria')}? 'has-error'">
+                <label>Categoria</label>
+                <input id="categoria" class="form-control" type="text" name="categoria" th:field="*{categoria}"></input>
+            </div>
+            
+            <div class="form-group" th:classappend="${#fields.hasErrors('dataValidade')}? 'has-error'">
+                <label>Data de validade</label>
+                <input id="dataValidade" class="form-control data" type="text" name="dataValidade" th:field="*{dataValidade}"></input>
+                
+<!--                 <div class='input-group date' id='datetimepicker1'> -->
+<!--                     <input type='text' class="form-control" name="dataValidade" th:field="*{dataValidade}"/> -->
+<!--                     <span class="input-group-addon"> -->
+<!--                         <span class="glyphicon glyphicon-calendar"></span> -->
+<!--                     </span> -->
+<!--                 </div> -->
             </div>
 
             <div class="form-group" th:classappend="${#fields.hasErrors('fornecedor')}? 'has-error'">

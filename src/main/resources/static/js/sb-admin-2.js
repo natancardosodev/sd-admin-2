@@ -23,7 +23,7 @@ $(function() {
             $("#page-wrapper").css("min-height", (height) + "px");
         }
     });
-
+   
     var url = window.location;
     // var element = $('ul.nav a').filter(function() {
     //     return this.href == url;

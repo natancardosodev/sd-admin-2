@@ -28,9 +28,10 @@ public class Fornecedor implements Serializable{
 	
 	private String nome;
 	
-	private String telefone;
-	
 	private String endereco;
+	
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="fornecedor")
+	private List<Telefone> telefones;
 	
 	@OneToMany(cascade=CascadeType.ALL,mappedBy="fornecedor")
 	private List<Contato> contatos;
@@ -70,20 +71,6 @@ public class Fornecedor implements Serializable{
 	}
 
 	/**
-	 * @return telefone para acessar
-	 */
-	public String getTelefone() {
-		return telefone;
-	}
-
-	/**
-	 * @param telefone para modificar
-	 */
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
-
-	/**
 	 * @return contatos para acessar
 	 */
 	public List<Contato> getContatos() {
@@ -95,6 +82,20 @@ public class Fornecedor implements Serializable{
 	 */
 	public void setContatos(List<Contato> contatos) {
 		this.contatos = contatos;
+	}
+
+	/**
+	 * @return telefones para acessar
+	 */
+	public List<Telefone> getTelefones() {
+		return telefones;
+	}
+
+	/**
+	 * @param telefones para modificar
+	 */
+	public void setTelefones(List<Telefone> telefones) {
+		this.telefones = telefones;
 	}
 
 	/**

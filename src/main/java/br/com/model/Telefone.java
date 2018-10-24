@@ -35,6 +35,9 @@ public class Telefone implements Serializable{
 	@ManyToOne
 	private Funcionario funcionario;
 	
+	@ManyToOne
+	private Fornecedor fornecedor;
+	
 	/**
 	 * @return id para acessar
 	 */
@@ -103,6 +106,20 @@ public class Telefone implements Serializable{
 	 */
 	public void setFuncionario(Funcionario funcionario) {
 		this.funcionario = funcionario;
+	}
+
+	/**
+	 * @return fornecedor para acessar
+	 */
+	public Fornecedor getFornecedor() {
+		return fornecedor;
+	}
+
+	/**
+	 * @param fornecedor para modificar
+	 */
+	public void setFornecedor(Fornecedor fornecedor) {
+		this.fornecedor = fornecedor;
 	}
 
 	@Override

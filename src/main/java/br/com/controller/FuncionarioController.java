@@ -1,5 +1,6 @@
 package br.com.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.com.model.Endereco;
 import br.com.model.Funcionario;
+import br.com.service.EnderecoService;
 import br.com.service.FuncionarioService;
 /**
  * @author natancardosodev
@@ -27,6 +30,9 @@ public class FuncionarioController {
 	
 	@Autowired
 	private FuncionarioService service;
+	
+	@Autowired
+	private EnderecoService enderecoService;
 	
 	@GetMapping
 	public ModelAndView listar() {
@@ -55,9 +61,13 @@ public class FuncionarioController {
 	
 	@GetMapping("/novo")
 	public ModelAndView novo(Funcionario funcionario) {
-		ModelAndView mv = new ModelAndView("pages/funcionario/novo");
-		mv.addObject("funcionario", funcionario);
-		return mv;
+		List<Endereco> enderecos = enderecoService.list();
+		
+		HashMap<String, Object> dados = new HashMap<String, Object>();
+		dados.put("funcionario", funcionario);
+		dados.put("enderecos", enderecos);
+        
+        return new ModelAndView("pages/funcionario/novo",dados);
 	}
 	
 	@PostMapping("/save")

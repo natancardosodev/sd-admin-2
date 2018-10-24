@@ -25,14 +25,14 @@
         </div>
 
         <div class="table-responsive">
-            <table class="table table-striped">
+            <table class="table table-striped table-hover">
                 <thead>
                     <tr>
                         <th>Id</th>
                         <th>Descrição</th>
                         <th>Contato</th>
                         <th>Empresa</th>
-                        <th>Funcionario</th>
+                        <th>Funcionário</th>
                         <th>Fornecedor</th>
                         <th class="th-acoes">Ações</th>
                     </tr>
@@ -41,13 +41,13 @@
                     <tr th:each="e: ${emails}">
                         <td th:text="${e.id}"></td>
                         <td th:text="${e.descricao}"></td>
-                        <td th:each="c: ${contatos}" th:text="${c.nome}"></td>
-                        <td th:each="e: ${empresas}" th:text="${e.id}"></td>
-                        <td th:each="f: ${funcionarios}" th:text="${f.nome}"></td>
-                        <td th:each="fo: ${fornecedores}" th:text="${fo.nome}"></td>
+                        <td th:text="${e.contato.nome}"></td>
+                        <td th:text="${e.empresa.nome}"></td>
+                        <td th:text="${e.funcionario.nome}"></td>
+                        <td th:text="${e.fornecedor.nome}"></td>
                         <td>
-                            <a th:href="@{emails/edit/{id}(id=${c.id})}" type="button" class="btn btn-outline btn-warning">Editar</a>
-                            <a th:href="@{emails/delete/{id}(id=${c.id})}" type="button" class="btn btn-outline btn-danger">Excluir</a>
+                            <a th:href="@{emails/edit/{id}(id=${e.id})}" type="button" class="btn btn-outline btn-warning">Editar</a>
+                            <a th:href="@{emails/delete/{id}(id=${e.id})}" type="button" class="btn btn-outline btn-danger">Excluir</a>
                         </td>
                     </tr>
                 </tbody>

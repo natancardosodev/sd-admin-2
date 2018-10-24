@@ -5,7 +5,7 @@
     <div id="page-wrapper">
         <div class="row top-header">
             <div class="col-lg-12">
-                <h1>Novo Email</h1>
+                <h1>Cadastro de Email</h1>
             </div>
         </div>
 
@@ -20,7 +20,7 @@
             <span th:text="${mensagem}"></span>
         </div>
 
-        <form th:object="${contato}" th:action="@{/contatos/save}" method="POST" role="form">
+        <form th:object="${email}" th:action="@{/emails/save}" method="POST" role="form">
 
             <input id="id" type="hidden" class="form-control" th:field="*{id}" />
             <div class="form-group">
@@ -46,7 +46,7 @@
             <div class="form-group" th:classappend="${#fields.hasErrors('empresa')}? 'has-error'">
                 <label for="empresas">Empresa</label>
                 <select class="form-control" id="empresas" th:field="*{empresa}">
-				    <option th:each="e: ${empresas}" th:value="${e.id}" th:text="${e.id}"></option>
+				    <option th:each="e: ${empresas}" th:value="${e.id}" th:text="${e.nome}"></option>
 		        </select>
             </div>
 

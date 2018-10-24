@@ -29,7 +29,7 @@
    		</div>
 
 		<div class="table-responsive">
-			<table class="table table-striped">
+			<table class="table table-striped table-hover">
 				<thead>
 					<tr>
 						<th>Id</th>
@@ -42,9 +42,7 @@
 				      <tr th:each="c: ${departamentos}">  
 				      	<td th:text="${c.id}"></td>
 				        <td th:text="${c.codDepartamento}"></td>
-<!-- 				        <td th:text="${c.empresa}"></td> -->
-						<td th:each="e: ${empresas}" 
-							th:text="${e.id}"></td>
+				        <td th:text="${c.empresa.nome}"></td>
 				        <td>
 				        	<a th:href="@{departamentos/edit/{id}(id=${c.id})}" type="button" class="btn btn-outline btn-warning">Editar</a>
 				        	<a th:href="@{departamentos/delete/{id}(id=${c.id})}" type="button" class="btn btn-outline btn-danger">Excluir</a>

@@ -40,20 +40,12 @@ public class DepartamentoController {
 	
 	@GetMapping
 	public ModelAndView listar() {
-//		List<Departamento> lista = service.list();
-//		
-//		ModelAndView mv = new ModelAndView("pages/departamento/departamentos");
-//		mv.addObject("departamentos", lista);
-//		
-//		return mv;
-		List<Departamento> departamentos = service.list();
-		List<Empresa> empresas = empresaService.list();
+		List<Departamento> lista = service.list();
+
+		ModelAndView mv = new ModelAndView("pages/departamento/departamentos");		
+		mv.addObject("departamentos", lista);
 		
-		HashMap<String, Object> dados = new HashMap<String, Object>();
-        dados.put("departamentos", departamentos);
-        dados.put("empresas", empresas);
-        
-        return new ModelAndView("pages/departamento/departamentos",dados);
+		return mv;
 	}
 	
 	@GetMapping("/delete/{id}")
@@ -74,10 +66,6 @@ public class DepartamentoController {
 	
 	@GetMapping("/novo")
 	public ModelAndView novo(Departamento departamento) {
-//		ModelAndView mv = new ModelAndView("pages/departamento/novo");
-//		mv.addObject("departamentos", departamento);
-//		
-//		return mv;
 		List<Empresa> empresas = empresaService.list();
 		
 		HashMap<String, Object> dados = new HashMap<String, Object>();
