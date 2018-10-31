@@ -30,6 +30,8 @@ public class Fornecedor implements Serializable{
 	
 	private String endereco;
 	
+	private boolean ativo;
+	
 	@OneToMany(cascade=CascadeType.ALL,mappedBy="fornecedor")
 	private List<Telefone> telefones;
 	
@@ -110,6 +112,20 @@ public class Fornecedor implements Serializable{
 	 */
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
+	}
+
+	/**
+	 * @return ativo para acessar
+	 */
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	/**
+	 * @param ativo para modificar
+	 */
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
 	}
 
 	/**

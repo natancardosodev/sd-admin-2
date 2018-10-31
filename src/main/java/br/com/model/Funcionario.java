@@ -33,6 +33,8 @@ public class Funcionario implements Serializable{
 	
 	private String matricula;
 	
+	private boolean ativo = true;
+	
 	@OneToOne(fetch = FetchType.LAZY)
 	private Endereco endereco;
 	
@@ -85,6 +87,20 @@ public class Funcionario implements Serializable{
 	 */
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
+	}
+
+	/**
+	 * @return ativo para acessar
+	 */
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	/**
+	 * @param ativo para modificar
+	 */
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
 	}
 
 	/**

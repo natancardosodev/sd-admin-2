@@ -35,23 +35,23 @@ INSERT INTO `departamento` (`id`, `cod_dep`, `empresa_id`) VALUES
 (13, 635, 3),
 (14, 449, 3);
 
-INSERT INTO `funcionario` (`id`, `matricula`, `nome`, `endereco_id`) VALUES
-(1, '69851', 'Igor Pietro Eduardo Martins', 1),
-(2, '89121', 'Kaique Benjamin Duarte', 2),
-(3, '95621', 'Andreia Benedita Jéssica Nogueira', 3),
-(4, '89465', 'Heloisa Mariah Oliveira', 5),
-(5, '28782', 'José Enzo Caldeira', 4),
-(6, '04104', 'Breno Bernardo Isaac Almeida', 6),
-(7, '52058', 'Isabela Carolina Duarte', 7);
+INSERT INTO `funcionario` (`id`, `matricula`, `nome`, `ativo`, `endereco_id`) VALUES
+(1, '69851', 'Igor Pietro Eduardo Martins', 1, 1),
+(2, '89121', 'Kaique Benjamin Duarte', 0, 2),
+(3, '95621', 'Andreia Benedita Jéssica Nogueira', 0, 3),
+(4, '89465', 'Heloisa Mariah Oliveira', 1, 5),
+(5, '28782', 'José Enzo Caldeira', 0, 4),
+(6, '04104', 'Breno Bernardo Isaac Almeida', 1, 6),
+(7, '52058', 'Isabela Carolina Duarte', 1, 7);
 
-INSERT INTO `fornecedor` (`id`, `endereco`, `nome`) VALUES
-(1, 'Rua Afonso Campos, 658 - Mangabeira I', 'Aliança Madeireira LTDA'),
-(2, 'Av. Celso Garcia, 412 - Geisel', 'Casa da Construção'),
-(3, 'Rua José Oiticica Filho, 767 - Bayeux', 'Bento e Emily Limpeza Ltda'),
-(4, 'Rua Doutor Roque José Balbo, 430 - Santa Rita', 'Laís e Natália Restaurante ME'),
-(5, 'Rua Gasparino Ribeiro, 52 - Recife', 'Enrico Alves Marcenaria ME'),
-(6, 'Rua Ferreira Aguiar, 535 - João Pessoa', 'Oliver Marketing Ltda'),
-(7, 'Rua José Carlos Cirino, 251 - Olinda', 'Edson e Esther Eletrônica ME');
+INSERT INTO `fornecedor` (`id`, `endereco`, `ativo`, `nome`) VALUES
+(1, 'Rua Afonso Campos, 658 - Mangabeira I', 1, 'Aliança Madeireira LTDA'),
+(2, 'Av. Celso Garcia, 412 - Geisel', 0, 'Casa da Construção'),
+(3, 'Rua José Oiticica Filho, 767 - Bayeux', 1, 'Bento e Emily Limpeza Ltda'),
+(4, 'Rua Doutor Roque José Balbo, 430 - Santa Rita', 1, 'Laís e Natália Restaurante ME'),
+(5, 'Rua Gasparino Ribeiro, 52 - Recife', 1, 'Enrico Alves Marcenaria ME'),
+(6, 'Rua Ferreira Aguiar, 535 - João Pessoa', 0, 'Oliver Marketing Ltda'),
+(7, 'Rua José Carlos Cirino, 251 - Olinda', 1, 'Edson e Esther Eletrônica ME');
 
 INSERT INTO `contato` (`id`, `nome`, `empresa_id`, `fornecedor_id`) VALUES
 (1, 'Angela Pigatto Ferro', 1, 1),

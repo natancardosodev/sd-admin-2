@@ -9,12 +9,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.thymeleaf.util.StringUtils;
 
+import br.com.dto.FornecedorPesquisaDTO;
 import br.com.model.Fornecedor;
 import br.com.service.FornecedorService;
 /**
@@ -29,11 +32,17 @@ public class FornecedorController {
 	private FornecedorService service;
 	
 	@GetMapping
-	public ModelAndView listar() {
-		List<Fornecedor> lista = service.list();
-		
+	public ModelAndView listar(@ModelAttribute("filtro") FornecedorPesquisaDTO filtro) {
 		ModelAndView mv = new ModelAndView("pages/fornecedor/fornecedores");		
-		mv.addObject("fornecedores", lista);
+
+		if(!StringUtils.isEmpty(filtro.getNome())) {
+			List<Fornecedor> fornecedores = this.service.filtrar(filtro);
+			mv.addObject("fornecedores", fornecedores);
+//		}else if(StringUtils.isEmpty(filtro.getNome())) {
+//			mv.addObject("fornecedores", service.pesquisaVazia());
+		}else {
+			mv.addObject("fornecedores", service.list());
+		}
 		
 		return mv;
 	}
@@ -71,6 +80,19 @@ public class FornecedorController {
 
 		attributes.addFlashAttribute("mensagem", "Fornecedor salvo com sucesso!");
 		this.service.save(fornecedor);
+		return mv;
+	}
+	
+	@GetMapping("/ativar/{id}")
+	public ModelAndView ativarDesativar(@PathVariable("id") Long id,RedirectAttributes attributes) {
+		ModelAndView mv = new ModelAndView("redirect:/fornecedores");
+		
+		if(this.service.ativarDesativar(id)) {
+			attributes.addFlashAttribute("ativadoDesativado", "Fornecedor ativado com sucesso!");
+		}else {
+			attributes.addFlashAttribute("ativadoDesativado", "Fornecedor desativado com sucesso!");
+		}
+		
 		return mv;
 	}
 }

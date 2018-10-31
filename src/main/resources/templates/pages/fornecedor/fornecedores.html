@@ -25,13 +25,38 @@
             <span th:text="${removido}"></span>
         </div>
 
-        <div class="table-responsive">
+        <div class="alert alert-success" th:if="${not #strings.isEmpty(ativadoDesativado)}">
+			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+			<span th:text="${ativadoDesativado}"></span>
+   		</div>
+		
+		<div class="table-responsive">
+			
+			<form method="GET" class="form-horizontal" action="/funcionarios" th:object="${filtro}">
+	   			<div class="form-group">
+	   				<div class="col-sm-4">
+	   					<div class="input-group">
+	   						<input class="form-control" placeholder="Qual funcionário você está procurando?"
+	   							autofocus="autofocus" th:field="*{nome}"></input>
+	   						<span class="input-group-btn">
+	   							<button type="submit" class="btn btn-default">
+	   								<i class="glyphicon glyphicon-search"></i>
+	   							</button>
+	   						</span>
+	   					</div>
+	   				</div>
+	   			</div>
+	   		</form>			
+			
+			<br/>
+
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
                         <th>Id</th>
                         <th>Nome</th>
                         <th>Endereço</th>
+                        <th>Status</th>
                         <th class="th-acoes">Ações</th>
                     </tr>
                 </thead>
@@ -40,9 +65,12 @@
                         <td th:text="${f.id}"></td>
                         <td th:text="${f.nome}"></td>
                         <td th:text="${f.endereco}"></td>
+                        <td th:text="(${f.ativo} ? 'Ativo' : 'Inativo')"></td>
                         <td>
-                            <a th:href="@{fornecedores/edit/{id}(id=${f.id})}" type="button" class="btn btn-outline btn-warning">Editar</a>
+                            <a th:href="@{fornecedores/edit/{id}(id=${f.id})}" type="button" class="btn btn-outline btn-primary">Editar</a>
                             <a th:href="@{fornecedores/delete/{id}(id=${f.id})}" type="button" class="btn btn-outline btn-danger">Excluir</a>
+                            <a th:href="@{fornecedores/ativar/{id}(id=${f.id})}" type="button" class="btn btn-outline btn-warning" 
+                               th:text="(${f.ativo} ? 'Desativar' : 'Ativar')">Ativar</a>
                         </td>
                     </tr>
                 </tbody>
