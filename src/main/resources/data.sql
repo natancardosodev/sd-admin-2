@@ -78,3 +78,10 @@ INSERT INTO `produto` (`id`, `categoria`, `codigo`, `data_validade`, `nome`, `fo
 (3, 'Câmeras digitais', 45200, '2021-10-29', 'Câmera Nikon D5300 24,2 Mp', 6),
 (4, 'Bebidas', 48798, '2018-12-28', 'Refrigerante Coca-cola 2L', 4),
 (5, 'Comunicação Visual', 3695, '2019-02-22', 'Banner 1,2 x 0,8m', 6);
+
+INSERT INTO `cliente` (`id`, `nome`, `email`) VALUES
+(1, 'Natan Cardoso', 'natanc@gmail.com'),
+(2, 'Betina Clarice Drumond', 'drumondbc@hotmail.com'),
+(3, 'Cláudio Gustavo Barbosa', 'claudio23@gmail.com'),
+(4, 'Teresinha Louise Pires', 'teresinhapires8@gmail.com'),
+(5, 'Caio Guilherme Silva', 'caiogui12@gmail.com');
