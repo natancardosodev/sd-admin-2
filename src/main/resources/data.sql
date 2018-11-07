@@ -85,3 +85,17 @@ INSERT INTO `cliente` (`id`, `nome`, `email`) VALUES
 (3, 'Cláudio Gustavo Barbosa', 'claudio23@gmail.com'),
 (4, 'Teresinha Louise Pires', 'teresinhapires8@gmail.com'),
 (5, 'Caio Guilherme Silva', 'caiogui12@gmail.com');
+
+INSERT INTO `usuario` (`login`, `nome_completo`, `senha`) VALUES 
+('natan', 'Natan Cardoso', '$2a$10$9E44tqDEJ75Wu0GbfCTlf.FnQ5Ob7WwamFiI9ffncKRybqvZ9Rfgy'), 
+('gustavo', 'Gustavo Silva', '$2y$12$h0ssK/GkqANJ7mCY1.BD5.PhMWwbZZ9BdRlmUCaVDZtoXKfIW8Pn6'), 
+('joana', 'Joana Lopes', '$2y$12$g9TYJg5jjG6YXhALtYHBs.BEN/s4QfblfLzAzumUkESyLLeKr0yPO');
+
+INSERT INTO `permissao` (`nome_permissao`) VALUES 
+('ROLE_ADMIN'), 
+('ROLE_USER');
+
+INSERT INTO `usuarios_permissoes` (`usuario_id`, `permissao_id`) VALUES 
+('natan', 'ROLE_ADMIN'), 
+('gustavo', 'ROLE_USER'), 
+('joana', 'ROLE_USER');
