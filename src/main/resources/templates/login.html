@@ -47,16 +47,7 @@
 	            Até logo !
 	        </div>
 		   
-<form th:object="${usuario}" th:action="@{/login/signin}" method="POST" role="form">
-
-<!--             <input id="id" type="hidden" class="form-control" th:field="*{id}" /> -->
-            <div class="form-group">
-                <div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
-                    <div th:each="detailedError : ${#fields.detailedErrors()}">
-                        <span th:text="${mensagem}"></span>
-                    </div>
-                </div>
-            </div>
+	<form th:object="${usuario}" th:action="@{/login/}" method="POST" role="form">
 
         <div class="form-group" th:classappend="${#fields.hasErrors('login')}? 'has-error'">
             <input id="login" class="form-control" type="text" name="login" th:field="*{login}" placeholder="Usuário" required/>
@@ -69,7 +60,7 @@
         <div class="form-group">
             <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Entrar</button>
         </div>
-</form>
+	</form>
     
 		</div>
 	</div>

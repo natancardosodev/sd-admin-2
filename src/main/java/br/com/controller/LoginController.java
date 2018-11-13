@@ -32,7 +32,7 @@ public class LoginController {
         return new ModelAndView("/login",dados);
 	}
 	
-	@PostMapping("/signin")
+	@PostMapping
 	public ModelAndView salvar(@Valid Usuario usuario, BindingResult result, 
 			Model model, RedirectAttributes attributes){
 		
