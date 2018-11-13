@@ -7,14 +7,15 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-import org.springframework.security.core.GrantedAuthority;
+//import org.springframework.security.core.GrantedAuthority;
 
 /**
  * @author natancardosodev
  *
  */
 @Entity
-public class Permissao implements GrantedAuthority, Serializable{
+//public class Permissao implements GrantedAuthority, Serializable{
+public class Permissao implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 
@@ -40,9 +41,9 @@ public class Permissao implements GrantedAuthority, Serializable{
 		this.usuarios = usuarios;
 	}
 
-	@Override
-	public String getAuthority() {
-		return this.nomePermissao;
-	}
+//	@Override
+//	public String getAuthority() {
+//		return this.nomePermissao;
+//	}
 	
 }
